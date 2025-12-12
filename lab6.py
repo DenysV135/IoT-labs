@@ -37,7 +37,11 @@ class File:
 
         if not os.path.exists(directory):
             raise FileNotFound("Файл не знайдено")
-        self.tree = ET.parse(self.full_path)
+        
+        try:
+            self.tree = ET.parse(self.full_path)
+        except ET.ParseError:
+            raise FileCorrupted("Файл пошкоджено")
         self.root = self.tree.getroot()
         
         self.directory = directory
@@ -55,7 +59,7 @@ class File:
         """
         Docstring for edit_data
          :param self: Description
-        :param content: Description
+        :param content: text
         """
         try:
             self.root = ET.Element(tag)
@@ -84,7 +88,7 @@ class File:
 
 if __name__ == "__main__":
     try:
-        file3 = File("C:/Users/Admin/Desktop/labs/lab6", "labfile.xml")
+        file3 = File(".", "labfile.xml")
         print(file3.read_file())
         print('\n\n')
         new_data = "<users><user>Student</user></users>"
