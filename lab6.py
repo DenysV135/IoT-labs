@@ -88,7 +88,7 @@ class File:
 
 if __name__ == "__main__":
     try:
-        file3 = File(".", "labfile.xml")
+        result_file = File(".", "labfile.xml")
         print(file3.read_file())
         print('\n\n')
         new_data = "<users><user>Student</user></users>"
