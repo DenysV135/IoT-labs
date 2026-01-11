@@ -1,6 +1,6 @@
 
 
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as et
 import logging
 import os
 
